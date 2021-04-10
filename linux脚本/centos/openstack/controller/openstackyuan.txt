@@ -1,0 +1,13 @@
+#!/bin/sh
+####### xxxxx #########
+# yum 安装 openstack 源
+######## 介绍结束 ###############
+
+
+########## 脚本开始 ############
+yum install -y epel-release
+yum install -y centos-release-openstack-queens
+yum upgrade –y
+yum install -y openstack-selinux
+yum install -y python-openstackclient
+########## 脚本结束 ############

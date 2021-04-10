@@ -1,0 +1,25 @@
+pip3 install traitlets
+pip3 install jupyter notebook
+jupyter notebook --generate-config --allow-root
+ipython
+vim /root/.jupyter/jupyter_notebook_config.py
+jupyter notebook
+mkdir /opt/jupyter
+jupyter notebook
+vim ~/.jupyter/jupyter_notebook_config.py
+jupyter notebook
+vim ~/.jupyter/jupyter_notebook_config.py
+jupyter notebook
+ifconfig
+jupyter notebook
+systemctl stop firewalld && systemctl disable firewalld
+sed -i 's#SELINUX=enforcing#SELINUX=disabled#g' /etc/selinux/config
+setenforce 0
+rpm -ivh http://mirrors.yun-idc.com/epel/epel-release-latest-7.noarch.rpm
+yum install vim openssl-devel readline-devel python3-devel python3-pip -y
+yum install libxml2 libxml2-dev libxslt1.1 libxslt1-dev
+jupyter notebook
+ssh username@address_of_remote -L127.0.0.1:1234:127.0.0.1:8888
+ssh - keygen -t rsa -P
+ifconfig
+jupyter notebook

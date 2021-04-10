@@ -1,0 +1,58 @@
+#!/bin/bash
+
+####### xxxxx #########
+# 
+######## 介绍结束 ###############
+
+
+# 连接MySQL数据库
+# Host=127.0.0.1（或者数据库服务器地址）
+# User=username
+# PW=password
+ 
+
+########## 脚本开始 ############
+#本地连接
+mysql -u$root -p$mysql <<EOF 
+create database keystone;
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY
+'openstack'; GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY
+'openstack';
+
+create database glance;
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY 'openstack';
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY 'openstack';
+
+create database nova_api;
+create database nova;
+create database nova_cell0;
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' IDENTIFIED BY
+'openstack'; GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' IDENTIFIED BY
+'openstack';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY 'openstack';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'openstack';
+GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'localhost' IDENTIFIED BY
+'openstack'; GRANT ALL PRIVILEGES ON nova_cell0.* TO 'nova'@'%' IDENTIFIED BY
+'openstack';
+
+create database neutron;
+GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' IDENTIFIED BY 'openstack';
+GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' IDENTIFIED BY 'openstack';
+
+create database cinder;
+GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'localhost' IDENTIFIED BY 'openstack';
+GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'openstack';
+
+
+
+
+EOF
+########## 脚本结束 ############
+
+
+#远程连接
+# mysql -h$Host -u$User -p$PW <<EOF #指定Host，其他不变
+# use DATABASE_NAME;
+# SELECT * FROM TABLE_NAME;
+# COMMIT;
+# EOF 

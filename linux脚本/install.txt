@@ -1,0 +1,39 @@
+# 下载docker 并安装
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
+# 阿里镜像加速
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://q4a5yqz4.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo service docker start
+# 添加docker开机启动
+systemctl enable docker
+# docker 镜像下载
+docker pull ubuntu:18.04
+docker pull mysql:5.7
+docker run -p 3309:3306 --name mysql -v /mysql/conf:/etc/mysql/conf.d -v /mysql/logs:/logs -v /mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=hyh175052 -d --privileged=true mysql:5.7
+vim myslqRun.sh
+docker images
+docker start 413be204e9c3
+docker start containername
+docker start mysql
+vim myslqRun.sh
+vim myslqStop.sh
+sudo tee ~/myslqRun.sh <<-'EOF'
+{
+  "registry-mirrors": ["https://q4a5yqz4.mirror.aliyuncs.com"]
+}
+EOF
+
+sudo tee ~/myslqStop.sh <<-'EOF'
+{
+  "registry-mirrors": ["https://q4a5yqz4.mirror.aliyuncs.com"]
+}
+EOF
+chmod +x *

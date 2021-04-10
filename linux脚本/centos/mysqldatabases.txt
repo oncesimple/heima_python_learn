@@ -1,0 +1,18 @@
+#!/bin/bash
+#连接MySQL数据库
+Host=127.0.0.1（或者数据库服务器地址）
+User=username
+PW=password
+ 
+#本地连接
+mysql -u$User -p$PW <<EOF #开始SQL语句
+use DATABASE_NAME;#选择数据库（选择模式）
+SELECT * FROM TABLE_NAME;#执行SQL语句
+COMMIT;#对于更新表格的操作执行commit语句
+EOF #结束SQL语句
+#远程连接
+mysql -h$Host -u$User -p$PW <<EOF #指定Host，其他不变
+use DATABASE_NAME;
+SELECT * FROM TABLE_NAME;
+COMMIT;
+EOF 
